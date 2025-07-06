@@ -1,0 +1,48 @@
+{
+  "model": "gpt-4o",
+  "messages": [
+    {
+      "role": "system",
+      "content": [
+        {
+          "text": "Your goal is to identify if an academic paper from the field of Economics is empirical or not,  based on their title, abstract, and keywords describing their topics. For each paper, return either \"True\"  of \"False\" in JSON format. Here are some examples:\n\nPaper =>\nTitle: The Impact of Modular Assembly on Supply Chain Efficiency\nAbstract: This article studies the impact of modular assembly on supply chain efficiency. In the modular assembly approach, a manufacturer acquires pre‐assembled modules from its suppliers, rather than the individual components, as in the traditional assembly approach. We analyze the competitive behavior of a two‐stage modular assembly system consisting of a manufacturer, and a supplier who pre‐assembles two components into a module. The firms can choose their own inventory policies and we show the existence of Nash equilibrium in the inventory game. Moving from the traditional to the modular approach has a twofold effect on the supply chain. First, we investigate the effect of centralizing the component suppliers. It can be shown that when there is no production time shift, the module supplier always holds more component inventories than suppliers do in the traditional approach, which yields a lower cost for the manufacturer. However, the suppliers, and therefore the supply chain may incur a higher cost in the modular approach. Second, we study the effect of a shift in production time from the manufacturing stage to the supplier stage. From numerical studies, it has been found that such a lead time shift always benefits a centralized supply chain, but not necessarily so for a decentralized system. Combining the two effects, we find that the modular approach generally reduces the cost to the manufacturer and the supply chain, which explains the prevalence of modular assembly from the perspective of inventory management. These results also provide some insight into how firms can improve supply chain efficiency by choosing the right decision structure and lead time configuration.\nKeywords: ['Product Modularity', 'Modular Product Architecture', 'Component (thermodynamics)', 'Dual-Channel Supply Chains', 'Lead time']\nAnswer => { \"empirical\": False }\n\n\nPaper =>\nTitle: Does Multitasking Improve Performance? Evidence from the Emergency Department\nAbstract: This paper examines the effect of multitasking on overall worker performance, as measured by processing time, throughput rate, and output quality using microlevel operational data from the field. Specifically, we study the multitasking behavior of physicians in a busy hospital emergency department (ED). By drawing on recent findings in the experimental psychology literature and the nascent work in cognitive neuroscience, we develop several hypotheses for the effect of multitasking on worker performance. We first examine how multitasking affects a physician's processing time. We find that the total time taken to discharge a given number of patients has a U-shaped response to the level of physician multitasking; that is, multitasking initially helps to reduce the time taken, but only up to a certain threshold level, after which it increases in the level of multitasking. In addition, multitasking significantly impacts quality of care. Although lower levels of multitasking are associated with improved quality of care, at higher levels, additional multitasking leads to a smaller number of detected diagnoses and an increased likelihood of a 24-hour revisit rate to the ED. These findings have important implications for the design and organization of work in general and for the delivery of critical care in particular.\nKeywords: ['Human multitasking', 'Performance Analysis', 'Staffing Optimization']\nAnswer => { \"empirical\": True }\n\nPlease evaluate the following paper:\n",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "text": "Paper =>\nTitle: {{title}}\nAbstract:{{abstract}}\nKeywords:{{keywords}}\nAnswer =>",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "temperature": 0,
+  "max_tokens": 50,
+  "top_p": 1,
+  "frequency_penalty": 0,
+  "presence_penalty": 0,
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "name": "empirical_response",
+      "schema": {
+        "type": "object",
+        "required": [
+          "empirical"
+        ],
+        "properties": {
+          "empirical": {
+            "type": "boolean",
+            "description": "Indicates whether the provided content is from an empirical paper or not"
+          }
+        },
+        "additionalProperties": false
+      },
+      "strict": true
+    }
+  }
+}

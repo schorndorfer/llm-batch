@@ -1,0 +1,50 @@
+
+{
+"template_params": {
+  "model": "claude-sonnet-4-20250514",
+  "pvalue": "0.0.49",
+  "version": "v2"
+},
+"request": {
+  "model": "claude-sonnet-4-20250514",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "text": "Below is a summary of a study from an academic paper:\n \nThe study aimed to test how two different drugs impact whether a patient recovers from a certain disease. Subjects were randomly drawn from a fixed population and then randomly assigned to Drug A or Drug B. Fifty-two percent (52%) of subjects who took Drug A recovered from the disease while forty-four percent (44%) of subjects who took Drug B recovered from the disease.\n \nA test of the null hypothesis that there is no difference between Drug A and Drug B in terms of probability of recovery from the disease yields a *p*-value of 0.0.49.\n \nAssuming no prior studies have been conducted with these drugs, which of the following statements is most accurate\n\nOption A. A person drawn randomly from the same population as the subjects in the study is **more likely** to recover from the disease if given Drug A than if given Drug B.\n\nOption B. A person drawn randomly from the same population as the subjects in the study is **less likely** to recover from the disease if given Drug A than if given Drug B.\n\nOption C. A person drawn randomly from the same population as the subjects in the study is  **equally likely** to recover from the disease if given Drug A than if given Drug B.\n\nOption D. It **cannot be determined** whether a person drawn randomly from the same population as the subjects in the study is more / less / equally likely to recover from the disease if given Drug A or if given Drug B.\n\nIn considering this question, it might be helpful to bear in mind the six principles articulated in the 2016 American Statistical Association *Statement on Statistical Significance and *P*-values*:\n\nPrinciple 1. *P*-values can indicate how incompatible the data are with a specified statistical model.\n\nPrinciple 2. *P*-values do not measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone.\n\nPrinciple 3. Scientific conclusions and business or policy decisions should not be based only on whether a *p*-value passes a specific threshold.\n\nPrinciple 4. Proper inference requires full reporting and transparency.\n\nPrinciple 5. A *p*-value, or statistical significance, does not measure the size of an effect or the importance of a result.\n\nPrinciple 6. By itself, a *p*-value does not provide a good measure of evidence regarding a model or hypothesis.\n\nPlease answer only Option A, Option B, Option C, or Option D.",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "name": "single_option",
+      "strict": true,
+      "schema": {
+        "additionalProperties": false,
+        "properties": {
+          "selection": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "title": "Selection",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selection"
+        ],
+        "title": "Option",
+        "type": "object"
+      }
+    }
+  },
+  "temperature": 1
+}
+}

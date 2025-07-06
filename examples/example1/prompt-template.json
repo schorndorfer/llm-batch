@@ -1,0 +1,28 @@
+{
+  "model": "gpt-4o",
+  "messages": [
+    {
+      "role": "system",
+      "content": [
+        {
+          "text": "You are: {{Description}}",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "text": "What is your favorite book?",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "temperature": {{Temp}},
+  "max_tokens": 50,
+  "top_p": 1,
+  "frequency_penalty": 0,
+  "presence_penalty": 0
+}
